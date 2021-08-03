@@ -1,0 +1,36 @@
+1)  route:local/sign_up,
+    method:POST,
+    data:name,password,email,role_id,NIC ,mobile,city, country  
+
+2)  route:local/login ,
+    method: POST,
+    data: email,password
+
+3)  route:local/ ,
+    method: ,
+    data: 
+
+4)  route:local/ ,
+    method: ,
+    data: 
+5)  route: local/,
+    method: ,
+    data: 
+6)  route: local/,
+    method: ,
+    data: 
+7)  route: local/,
+    method: ,
+    data: 
+8)  route: local/,
+    method: ,
+    data: 
+9)  route: local/,
+    method: ,
+    data: 
+10)  route: local/,
+    method: ,
+    data: 
+11)  route: ,
+    method: ,
+    data: 
