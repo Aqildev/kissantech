@@ -3,12 +3,19 @@ let user="postgres"
 let password="aqil456"
 let port=5432
 let database= "KisanTech"
-const pool=new Pool({
-    user:user,
-    password:password,
-    port:port,
-    database: database
+// const pool=new Pool({
+//     user:user,
+//     password:password,
+//     port:port,
+//     database: database
+// });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
 module.exports = {
     async query(text, params) {
       const start = Date.now()
