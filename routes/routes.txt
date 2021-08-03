@@ -1,36 +1,43 @@
-1)  route:local/sign_up,
+1)  route:https://kissan-tec.herokuapp.com/sign_up,
     method:POST,
     data:name,password,email,role_id,NIC ,mobile,city, country  
 
-2)  route:local/login ,
+2)  route:https://kissan-tec.herokuapp.com/login ,
     method: POST,
     data: email,password
 
-3)  route:local/ ,
-    method: ,
+3)  route:https://kissan-tec.herokuapp.com/crops ,
+    method:GET ,
     data: 
 
-4)  route:local/ ,
+4)  route:https://kissan-tec.herokuapp.com/farm_insert ,
+    method: POST ,
+    data: crop_id,total_acre,longitude,latitude,address,farm_name 
+
+5)  route: https://kissan-tec.herokuapp.com//farm,
+    method: GET,
+    data: 
+6)  route: https://kissan-tec.herokuapp.com/AssignManagers,
+    method: POST ,
+    data: farm_id,manager_id
+7)  route: https://kissan-tec.herokuapp.com/cases,
+    method: POST,
+    data: farm_id,crop_id,temperature,wind_speed,weather,humidity,case_topic,case_desc
+8)  route: https://kissan-tec.herokuapp.com/,
     method: ,
     data: 
-5)  route: local/,
+9)  route: https://kissan-tec.herokuapp.com//cases,
+    method: GET,
+    data: farm_id
+10)  route: https://kissan-tec.herokuapp.com/AcceptCase,
+    method: PUT,
+    data: Case
+11)  route: https://kissan-tec.herokuapp.com/AddRemark,
+    method: PUT,
+    data: Case,remark
+12)  route: https://kissan-tec.herokuapp.com/,
     method: ,
     data: 
-6)  route: local/,
-    method: ,
-    data: 
-7)  route: local/,
-    method: ,
-    data: 
-8)  route: local/,
-    method: ,
-    data: 
-9)  route: local/,
-    method: ,
-    data: 
-10)  route: local/,
-    method: ,
-    data: 
-11)  route: ,
+13)  route: ,
     method: ,
     data: 

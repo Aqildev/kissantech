@@ -14,7 +14,7 @@ router.post('/login',async(req,res)=>{
         result=await db.query('Select * from users where email=$1 and password=$2',[email,password])
         console.log(result.rows[0].user_id)
         user=result.rows[0].user_id
-        jwt.sign({user}, 'secretkey', { expiresIn: '2h' }, (err, token) => {
+        jwt.sign({user}, 'secretkey', { expiresIn: '8h' }, (err, token) => {
           res.json({
             token
           });
