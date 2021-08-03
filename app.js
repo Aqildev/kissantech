@@ -41,7 +41,11 @@ app.use(consultant)
   //   console.log(req.user)
   // })
 
+  port=process.env.PORT||5000
 
-app.listen(5000,()=>{
+  app.listen(port,()=>{
     console.log("server up")
-})
+  })
+// app.listen(5000,()=>{
+//     console.log("server up")
+// })
