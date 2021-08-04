@@ -30,6 +30,14 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
         humidity:humidity
     }
     console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
+    try {
+        crop_id=await db.query('Select crop_id from farm')
+        crop_id=crop_id.rows[0].crop_id
+        console.log(crop_id)
+    } catch (error) {
+        console.log(error)
+        
+    }
     if(case_topic,case_desc,AdditionalData,farm_id)
     {
         try {
