@@ -30,13 +30,13 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
         humidity:humidity
     }
     console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
-    if(case_topic,case_desc,AdditionalData,farm_id,crop_id)
+    if(case_topic,case_desc,AdditionalData,farm_id)
     {
         try {
             console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
             console.log(req.files)
             cases=await db.query(`
-            insert into cases(case_topic,case_desc,AdditionalData,farm_id,crop_id) values ($1,$2,$3,$4,$5) Returning case_id`,[case_topic,case_desc,AdditionalData,farm_id,crop_id])
+            insert into cases(case_topic,case_desc,AdditionalData,farm_id) values ($1,$2,$3,$4) Returning case_id`,[case_topic,case_desc,AdditionalData,farm_id,crop_id])
             let case_id=cases.rows[0].case_id
             console.log(case_id)
             for(i=0;i<req.files.length;i++)
