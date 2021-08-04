@@ -22,22 +22,22 @@ const fileStorageEngine = multer.diskStorage({
 
 router.post('/cases',upload.array('images',10),async(req,res)=>{
     console.log(req.user)
-    const {farm_id,crop_id,temperature,wind_speed,weather,humidity,case_topic,case_desc}=req.body
+    const {farm_id,temperature,wind_speed,weather,humidity,case_topic,case_desc}=req.body
     AdditionalData={
         temperature:temperature,
         wind_speed:wind_speed,
         weather:weather,
         humidity:humidity
     }
-    console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
     try {
         crop_id=await db.query('Select crop_id from farm')
         crop_id=crop_id.rows[0].crop_id
         console.log(crop_id)
     } catch (error) {
         console.log(error)
-        
+
     }
+    console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
     if(case_topic,case_desc,AdditionalData,farm_id)
     {
         try {
