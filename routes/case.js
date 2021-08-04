@@ -29,6 +29,7 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
         weather:weather,
         humidity:humidity
     }
+    // let crop_id=null
     try {
         crop_id=await db.query('Select crop_id from farm')
         crop_id=crop_id.rows[0].crop_id
@@ -38,13 +39,13 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
 
     }
     console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
-    if(case_topic,case_desc,AdditionalData,farm_id)
+    if(case_topic,case_desc,AdditionalData,farm_id,crop_id)
     {
         try {
             console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
             console.log(req.files)
             cases=await db.query(`
-            insert into cases(case_topic,case_desc,AdditionalData,farm_id) values ($1,$2,$3,$4) Returning case_id`,[case_topic,case_desc,AdditionalData,farm_id])
+            insert into cases(case_topic,case_desc,AdditionalData,farm_id,crop_id) values ($1,$2,$3,$4,$5) Returning case_id`,[case_topic,case_desc,AdditionalData,farm_id,crop_id])
             let case_id=cases.rows[0].case_id
             console.log(case_id)
             for(i=0;i<req.files.length;i++)
