@@ -37,14 +37,19 @@ router.get('/farm',async(req,res)=>{
         if(user.role_id==1)
         {
             try {
-                result=await db.query(`Select farm.*,crops.crop_name,name,nic,mobile,city,country,email from farm inner join 
-                farm_managers on farm.farm_id=farm_managers.farm_id
-                inner join users on
-                farm_managers.farm_manager=users.user_id
+                result=await db.query(`Select farm.*,crops.crop_name from farm  
                 inner join crops on farm.crop_id=crops.crop_id
                 where farm_owner=$1
-                Order by name ASC;
+;
                 `,[user.user_id])
+                // result=await db.query(`Select farm.*,crops.crop_name,name,nic,mobile,city,country,email from farm inner join 
+                // farm_managers on farm.farm_id=farm_managers.farm_id
+                // inner join users on
+                // farm_managers.farm_manager=users.user_id
+                // inner join crops on farm.crop_id=crops.crop_id
+                // where farm_owner=$1
+                // Order by name ASC;
+                // `,[user.user_id])
                 console.log(result.rows) 
                 res.status(200).send({farm:result.rows})
             } catch (error) {
