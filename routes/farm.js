@@ -37,7 +37,7 @@ router.get('/farm',async(req,res)=>{
         if(user.role_id==1)
         {
             try {
-                result=await db.query(`Select farm.*,crops.crop_name from farm  
+                result=await db.query(`Select farm.*,crops.* from farm  
                 inner join crops on farm.crop_id=crops.crop_id
                 where farm_owner=$1
 ;
