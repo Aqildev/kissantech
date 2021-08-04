@@ -29,6 +29,7 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
         weather:weather,
         humidity:humidity
     }
+    console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
     if(case_topic,case_desc,AdditionalData,farm_id,crop_id)
     {
         try {
