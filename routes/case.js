@@ -20,9 +20,9 @@ const fileStorageEngine = multer.diskStorage({
   const upload = multer({ storage: fileStorageEngine });
 
 
-router.post('/cases',upload.array('images',10),async(req,res)=>{
+router.post('/cases',async(req,res)=>{
     console.log(req.user)
-    const {farm_id,temperature,wind_speed,weather,humidity,case_topic,case_desc}=req.body
+    const {farm_id,temperature,wind_speed,weather,humidity,case_topic,case_desc,images}=req.body
     AdditionalData={
         temperature:temperature,
         wind_speed:wind_speed,
@@ -39,18 +39,18 @@ router.post('/cases',upload.array('images',10),async(req,res)=>{
 
     }
     console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
-    if(case_topic,case_desc,AdditionalData,farm_id,crop_id)
+    if(case_topic,case_desc,AdditionalData,farm_id,crop_id,images)
     {
         try {
             console.log(case_topic,case_desc,AdditionalData,farm_id,crop_id)
-            console.log(req.files)
+            // console.log(req.files)
             cases=await db.query(`
             insert into cases(case_topic,case_desc,AdditionalData,farm_id,crop_id) values ($1,$2,$3,$4,$5) Returning case_id`,[case_topic,case_desc,AdditionalData,farm_id,crop_id])
             let case_id=cases.rows[0].case_id
             console.log(case_id)
-            for(i=0;i<req.files.length;i++)
+            for(i=0;i<images.length;i++)
             {
-                img_address='/images/'+req.files[i].filename
+                img_address=images[i]//'/images/'+req.files[i].filename
                 await db.query(`insert into images(image,case_id) values($1,$2)`,[img_address,case_id])
 
             }
