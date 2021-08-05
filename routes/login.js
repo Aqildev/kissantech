@@ -19,7 +19,7 @@ router.post('/login',async(req,res)=>{
           // res.json({
           //   token
           // });
-        res.status(200).send({token:token,email:result.rows[0].email,password:result.rows[0].password})
+        res.status(200).send({token:token,email:result.rows[0].email,mobile:result.rows[0].mobile})
         });
   
       }
