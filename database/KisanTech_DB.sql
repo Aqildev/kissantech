@@ -61,13 +61,14 @@ create table if not exists Cases(
 	case_topic		varchar(100),
 	case_desc		varchar(1000),
 	Farm_id		int NOT NULL,
-	crop_id		int NOT NULL,
-	Consultant_id	int NOT NULL,
+	crop_id		int ,
+	Consultant_id	int Default NULL,
+	AdditionalData JSONB, 
 	case_status	varchar(50) Default 'Pending',
 	assignment_date	date Default now(),
 	closing_date	date Default NULL,
 	remarks		varchar(1000) default NULL,
-
+	
 	constraint fk_Farm1 
 	Foreign Key(Farm_id)
 	References Farm(Farm_id),
@@ -86,12 +87,13 @@ create table if not exists Cases(
 
 create table if not exists Images(
 	image_id	Serial Primary Key,
-	Image_name	varchar(200),
+	image	varchar(1000),
 	Case_id	INT NOT NULL,
 	constraint fk_case
 	Foreign Key (Case_id)
 	References Cases(Case_id)
 );
+
 
 
 insert into crops(crop_name) values
