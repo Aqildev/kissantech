@@ -10,7 +10,7 @@ require('../config/passport');
 
 
 router.post('/farm_insert',passport.authenticate('jwt',{session:false}),async(req,res)=>{
-    const {crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date}=req.body
+    let {crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date}=req.body
     sowing_date=sowing_date ? sowing_date:null
     user_id=req.user.user_id
     if(user_id,crop_id,total_acre,longitude,latitude,address,farm_name)
