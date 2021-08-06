@@ -87,6 +87,13 @@ router.get('/farm',async(req,res)=>{
 
 router.put('/farm',(req,res)=>{
     console.log("put requests for farm")
+    let {crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id}=req.body
+
+    try {
+        db.query('Update farm set Farm_Owner=$1,crop_id=$2,total_acre=$3,logitude=$4,latitude=$5,address=$6,farm_name=$7,sowing_date=$8 where farm_id=$9',user_id,crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports=router;
