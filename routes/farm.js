@@ -10,12 +10,13 @@ require('../config/passport');
 
 
 router.post('/farm_insert',passport.authenticate('jwt',{session:false}),async(req,res)=>{
-    const {crop_id,total_acre,longitude,latitude,address,farm_name}=req.body
+    const {crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date}=req.body
+    sowing_date=sowing_date ? sowing_date:null
     user_id=req.user.user_id
     if(user_id,crop_id,total_acre,longitude,latitude,address,farm_name)
     {
         try {
-            await db.query('insert into farm(Farm_Owner,crop_id,total_acre,logitude,latitude,address,farm_name) values($1,$2,$3,$4,$5,$6,$7)',[user_id,crop_id,total_acre,longitude,latitude,address,farm_name])
+            await db.query('insert into farm(Farm_Owner,crop_id,total_acre,logitude,latitude,address,farm_name,sowing_date) values($1,$2,$3,$4,$5,$6,$7,$8)',[user_id,crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date])
             res.status(200).send("Inserted")
         } catch (error) {
             console.log(error)
@@ -82,6 +83,10 @@ router.get('/farm',async(req,res)=>{
         }
     
     
+})
+
+router.put('/farm',(req,res)=>{
+    console.log("put requests for farm")
 })
 
 module.exports=router;

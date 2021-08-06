@@ -119,5 +119,6 @@ insert into crops(crop_name) values
 ('Soyabean'),
 ('Safflower'),
 ('Sunflower'),
-('Groundnut');
+('Groundnut'),
+('Wheat');
 

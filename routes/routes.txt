@@ -14,7 +14,7 @@
     method: POST ,
     data: crop_id,total_acre,longitude,latitude,address,farm_name 
 
-5)  route: https://kissan-tec.herokuapp.com//farm,
+5)  route: https://kissan-tec.herokuapp.com/farm,
     method: GET,
     data: 
 6)  route: https://kissan-tec.herokuapp.com/AssignManagers,
@@ -22,11 +22,11 @@
     data: farm_id,manager_id
 7)  route: https://kissan-tec.herokuapp.com/cases,
     method: POST,
-    data: farm_id,crop_id,temperature,wind_speed,weather,humidity,case_topic,case_desc
+    data: farm_id,crop_id,temperature,wind_speed,weather,humidity,case_topic,case_desc,images
 8)  route: https://kissan-tec.herokuapp.com/,
     method: ,
     data: 
-9)  route: https://kissan-tec.herokuapp.com//cases,
+9)  route: https://kissan-tec.herokuapp.com/cases,
     method: GET,
     data: farm_id
 10)  route: https://kissan-tec.herokuapp.com/AcceptCase,
