@@ -92,6 +92,7 @@ router.put('/farm',(req,res)=>{
 
     try {
         db.query('Update farm set Farm_Owner=$1,crop_id=$2,total_acre=$3,logitude=$4,latitude=$5,address=$6,farm_name=$7,sowing_date=$8 where farm_id=$9',[user_id,crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id])
+        res.status(200).send()
     } catch (error) {
         console.log(error)
     }

@@ -12,7 +12,7 @@
 
 4)  route:https://kissan-tec.herokuapp.com/farm_insert ,
     method: POST ,
-    data: crop_id,total_acre,longitude,latitude,address,farm_name 
+    data: crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date 
 
 5)  route: https://kissan-tec.herokuapp.com/farm,
     method: GET,
@@ -35,6 +35,15 @@
 11)  route: https://kissan-tec.herokuapp.com/AddRemark,
     method: PUT,
     data: Case,remark
+12)  route: https://kissan-tec.herokuapp.com/farm,
+    method: PUT,
+    data: crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id
+12)  route: https://kissan-tec.herokuapp.com/,
+    method: ,
+    data: 
+12)  route: https://kissan-tec.herokuapp.com/,
+    method: ,
+    data: 
 12)  route: https://kissan-tec.herokuapp.com/,
     method: ,
     data: 
