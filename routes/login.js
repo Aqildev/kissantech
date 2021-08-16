@@ -11,16 +11,21 @@ router.post('/login',async(req,res)=>{
       console.log(email,password)
       if(email && password)
       {
-        result=await db.query('Select * from users where email=$1 and password=$2',[email,password])
-        console.log(result.rows[0].user_id)
-        user=result.rows[0].user_id
-        
-        jwt.sign({user}, 'secretkey', { expiresIn: '8h' }, (err, token) => {
-          // res.json({
-          //   token
-          // });
-        res.status(200).send({token:token,email:result.rows[0].email,mobile:result.rows[0].mobile})
-        });
+        try {
+          result=await db.query('Select * from users where email=$1 and password=$2',[email,password])
+          console.log(result.rows[0].user_id)
+          user=result.rows[0].user_id
+          
+          jwt.sign({user}, 'secretkey', { expiresIn: '8h' }, (err, token) => {
+            // res.json({
+            //   token
+            // });
+          res.status(200).send({token:token,email:result.rows[0].email,mobile:result.rows[0].mobile})
+          });
+            
+        } catch (error) {
+          console.log(error)
+        }
   
       }
       else
