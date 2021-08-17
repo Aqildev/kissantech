@@ -24,6 +24,7 @@ router.post('/login',async(req,res)=>{
           });
             
         } catch (error) {
+          res.status(401).send({error:"Invalid email/password"})
           console.log(error)
         }
   
