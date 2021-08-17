@@ -22,7 +22,7 @@ router.post('/sign_up', async (req, res) => {
             console.log(user.rows[0])
             user_id = user.rows[0].user_id
         } catch (error) {
-            res.status(400).send({ error: error })
+            // res.status(400).send({ error: error })
             console.log(error)
         }
         if (user_id == null) {
