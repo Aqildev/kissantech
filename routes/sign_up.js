@@ -36,7 +36,7 @@ router.post('/sign_up', async (req, res) => {
             }
         }
         else {
-            res.send({ error: "email already exist" })
+            res.status(400).send({ error: "email already exist" })
         }
     }
     else {
