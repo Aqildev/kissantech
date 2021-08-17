@@ -21,12 +21,14 @@ router.post('/sign_up',async(req,res)=>{
             user=await db.query('Select user_id from users where email=$1',[email])
             console.log(user.rows[0])
         } catch (error) {
+            res.status(400).send({error:error})
          console.log(error)   
         }
         try {
             await db.query('Insert into users(name,password,email,role_id,NIC ,mobile,city, country) values($1,$2,$3,$4,$5,$6,$7,$8)',[name,password,email,role_id,NIC ,mobile,city, country])
             res.status(200).send('Signup Successfull')
         } catch (error) {
+            res.status(400).send({error:error})
             console.log(error)
         }
     }
