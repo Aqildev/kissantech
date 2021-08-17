@@ -25,7 +25,7 @@ router.post('/sign_up', async (req, res) => {
             res.status(400).send({ error: error })
             console.log(error)
         }
-        if (user_id != null) {
+        if (user_id == null) {
 
             try {
                 await db.query('Insert into users(name,password,email,role_id,NIC ,mobile,city, country) values($1,$2,$3,$4,$5,$6,$7,$8)', [name, password, email, role_id, NIC, mobile, city, country])
