@@ -20,7 +20,7 @@ router.post('/farm_insert',passport.authenticate('jwt',{session:false}),async(re
             res.status(200).send("Inserted")
         } catch (error) {
             console.log(error)
-            res.status(400).send(error)
+            res.status(400).send({error:error})
         }
     }
 
@@ -59,7 +59,7 @@ router.get('/farm',async(req,res)=>{
             }
     
         }
-    }
+    
     // Give farm details with owner if user is manager
         if(user.role_id==2)
         {
@@ -76,12 +76,17 @@ router.get('/farm',async(req,res)=>{
                 console.log(result.rows) 
                 res.status(200).send({farm:result.rows})
             } catch (error) {
+                res.status(404).send({error:"Not Found"})
                 console.log(error)
                 
             }
     
         }
-    
+    }
+    else
+    {
+        res.status(401).send({error:'User not Logged in'})
+    }
     
 })
 
@@ -89,13 +94,28 @@ router.put('/farm',(req,res)=>{
     console.log("put requests for farm")
     let {crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id}=req.body
     user_id=req.user.user_id
-
-    try {
-        db.query('Update farm set Farm_Owner=$1,crop_id=$2,total_acre=$3,logitude=$4,latitude=$5,address=$6,farm_name=$7,sowing_date=$8 where farm_id=$9',[user_id,crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id])
-        res.status(200).send()
-    } catch (error) {
-        console.log(error)
+    if(user_id)
+    {
+        if(crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id)
+        {
+            try {
+                db.query('Update farm set Farm_Owner=$1,crop_id=$2,total_acre=$3,logitude=$4,latitude=$5,address=$6,farm_name=$7,sowing_date=$8 where farm_id=$9',[user_id,crop_id,total_acre,longitude,latitude,address,farm_name,sowing_date,farm_id])
+                res.status(200).send()
+            } catch (error) {
+                res.status(404).send()
+                console.log(error)
+            }
+        }
+        else
+        {
+            res.status(400).send({error:"Missing farm infromation"})
+        }
     }
+    else
+    {
+        res.status(401).send()
+    }
+
 })
 
 module.exports=router;
