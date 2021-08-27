@@ -9,8 +9,9 @@ let database= "KisanTech"
 //     port:port,
 //     database: database
 // });
+const DATABASE_URL='postgres://sxpzmoxfdftxvi:714ca275d31510ded1713eeb9511ca0645f30d1f96da64dcfe6cf00a65fc4da6@ec2-54-227-246-76.compute-1.amazonaws.com:5432/d9dr4qc34rujgs'
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: DATABASE_URL,//process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
